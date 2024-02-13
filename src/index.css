@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter&family=Poppins&family=Proza+Libre&family=Roboto+Mono:wght@500&display=swap'); */
+
+/* .font-bebas { font-family: 'Bebas Neue', sans-serif; } */
+body{
+    margin: auto;
+    max-width: 1440px;
+    position: relative;
+}
