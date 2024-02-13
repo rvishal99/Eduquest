@@ -21,11 +21,27 @@ import AddLecture from './Pages/Dashboard/Addlecture.jsx';
 
 import AdminDashboard from './Pages/Dashboard/AdminDashboard';
 
-import { AdminCheck, LoggedInFunc } from './components/Auth/auth.jsx'
 import ForgotPassword from './Pages/ForgotPassword.jsx'
 import ResetPassword from './Pages/ResetPassword.jsx'
+import { useSelector } from "react-redux";
+import { Navigate, Outlet } from "react-router-dom";
 
 function App() {
+  
+  const AdminCheck = () => {
+    const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
+
+    //console.log("isAdmin: ",isAdmin)
+    return isLoggedIn && isAdmin ? (
+      <Outlet />
+    ) : isLoggedIn ? (<Navigate to="/denied" />) : (<Navigate to="login" />)
+  };
+
+  const LoggedInFunc = () => {
+    const { isLoggedIn } = useSelector((state) => state.auth);
+
+    return isLoggedIn ? (<Outlet />) : (<Navigate to="login" />)
+  }
 
 
   return (
@@ -46,7 +62,7 @@ function App() {
 
 
         <Route element={< AdminCheck />}>
-        <Route path="/course/create" element={<CreateCourse />} />
+          <Route path="/course/create" element={<CreateCourse />} />
           <Route path="/course/addlecture" element={<AddLecture />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Route>
