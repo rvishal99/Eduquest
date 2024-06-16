@@ -19,6 +19,8 @@ function HomeLayout({ children }) {
 
     const isAdmin = useSelector((state) => state?.auth?.isAdmin)
 
+    console.log(typeof isAdmin)
+
 
 
     const changeWidth = () => {
@@ -67,16 +69,16 @@ function HomeLayout({ children }) {
                             <li>
                                 <Link to="/">Home</Link>
                             </li>
-                            {
-                                isLoggedIn && isAdmin &&
+                            {/* {
+                                isAdmin === 'true' &&
                                 (
                                     <li>
                                         <Link to="/admin/dashboard">Admin Dashboard</Link>
                                     </li>
                                 )
-                            }
+                            } */}
                             {
-                                isLoggedIn && isAdmin &&
+                                isAdmin &&
                                 (
                                     <li>
                                         <Link to="/course/create">Create new course</Link>

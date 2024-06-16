@@ -18,7 +18,8 @@ function EditProfile() {
     const [data, setData] = useState({
         fullName: "",
         avatar: undefined,
-        userId: useSelector((state) => state?.auth?.data?._id)
+        userId: useSelector((state) => state?.auth?.data?._id),
+        token: useSelector((state)=>state?.auth?.token)
     });
 
     function handleImageUpload(e) {
@@ -77,7 +78,7 @@ function EditProfile() {
 
         await dispatch(updateProfile([data.userId, formData]));
 
-        await dispatch(getUserData(data.userId));
+        await dispatch(getUserData([data.userId,{token:data.token}]));
 
         navigate("/user/profile");
     }

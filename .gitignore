@@ -23,3 +23,11 @@ dist-ssr
 *.sw?
 
 documentation.docx
+
+notes.js
+
+Redux/Slices/StatSlice.js
+Redux/Slices/RazorpaySlice.js
+
+Pages/Dashboard/AdminDashboard.jsx
+Pages/Payment/

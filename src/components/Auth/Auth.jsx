@@ -10,7 +10,7 @@
 //     ) : isLoggedIn ? (<Navigate to="/denied" />) : (<Navigate to="login" />)
 // };
 
-// export const LoggedInFunc=()=> {
+// expoart const LoggedInFunc=()=> {
 //     const { isLoggedIn } = useSelector((state) => state.auth);
 
 //     return isLoggedIn ? (<Outlet />) : (<Navigate to="login" />)

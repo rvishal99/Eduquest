@@ -12,8 +12,6 @@ function Login() {
     const dispatch = useDispatch()
     const navigator = useNavigate()
 
-
-
     const [inputType, setInputType] = useState("password")
 
 

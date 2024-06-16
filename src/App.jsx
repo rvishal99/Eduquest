@@ -23,11 +23,18 @@ import AdminDashboard from './Pages/Dashboard/AdminDashboard';
 
 import ForgotPassword from './Pages/ForgotPassword.jsx'
 import ResetPassword from './Pages/ResetPassword.jsx'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
+import ChangePassword from './Pages/User/ChangePassword.jsx'
+import { useEffect } from 'react'
+import { rehydrate } from './Redux/Slices/AuthSlice.js'
 
 function App() {
-  
+
+
+  const dispatch = useDispatch();
+
+
   const AdminCheck = () => {
     const { isLoggedIn, isAdmin } = useSelector((state) => state.auth);
 
@@ -43,6 +50,9 @@ function App() {
     return isLoggedIn ? (<Outlet />) : (<Navigate to="login" />)
   }
 
+  useEffect(() => {
+    dispatch(rehydrate());
+  }, [dispatch])
 
   return (
     <>
@@ -70,6 +80,8 @@ function App() {
         <Route element={<LoggedInFunc />}>
           <Route path='/user/profile' element={<Profile />} />
           <Route path='/user/editprofile' element={<EditProfile />} />
+          <Route path='/changepassword' element={<ChangePassword />} />
+
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/checkout/success' element={<CheckoutSuccess />} />
           <Route path='/checkout/fail' element={<CheckoutFailure />} />
@@ -77,8 +89,6 @@ function App() {
         </Route>
 
         <Route path="*" element={<NotFound />} />
-
-
 
       </Routes>
     </>
